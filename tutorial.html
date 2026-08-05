@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nazra · Tutorial</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Nazra <span class="ar">نظرة</span> · Tutorial</div>
+    <nav class="nav">
+      <a class="btn good" href="enroll.html" target="_blank" rel="noopener">＋ Enroll employee</a>
+      <a class="btn ghost" href="index.html">← Back to kiosk</a>
+    </nav>
+  </header>
+
+  <h2>How Nazra works</h2>
+  <p class="hint">Nazra recognizes each employee by the area around their eyes, so it works even while
+     the niqab is worn. Everything runs privately inside this browser — the camera video never leaves your device.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;color:var(--accent)">Part 1 · Enroll an employee (do this once per person)</h3>
+    <ol class="steps">
+      <li>Open the <b>Enroll employee</b> page and allow camera access when the browser asks.</li>
+      <li>Type the person's <b>full name</b> and <b>employee ID</b>.</li>
+      <li>Look at the camera. Click <b>⚡ Capture 20</b>, slowly turning your head a little and leaning
+          in/out so the samples cover natural variation.</li>
+      <li><b>Important:</b> cover your nose, mouth and chin (as it will be worn day-to-day) and click
+          <b>⚡ Capture 20</b> again. This teaches Nazra to recognize the person <i>while covered</i>.</li>
+      <li>Aim for about <b>40 samples</b>, then click <b>💾 Save employee</b>. Repeat for each person.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;color:var(--good)">Part 2 · Clock in / out at the kiosk</h3>
+    <ol class="steps">
+      <li>Open the <b>kiosk</b> page. Stand so your eyes are clearly in view.</li>
+      <li>The box shows <b>UNKNOWN</b>, then flips to <b>Employee ID, Name</b> once you're recognized.</li>
+      <li>A banner says <b>“BLINK TO LOG ATTENDANCE.”</b> <b>Blink</b> — this proves you're a live
+          person, not a photo.</li>
+      <li>You'll see <b>“LOG SUCCESSFUL”</b> with the time, and the entry appears in <b>Today's log</b>.
+          Nazra automatically alternates <b>IN</b> / <b>OUT</b> for each person per day.</li>
+      <li>Use <b>⬇︎ Export CSV</b> to download the full attendance history.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;color:var(--warn)">Tips for good accuracy</h3>
+    <ul>
+      <li>Enroll in the <b>same room and lighting</b> where the kiosk will be used.</li>
+      <li>Even overhead light is best; avoid strong backlight or glare on glasses.</li>
+      <li>If someone reads <b>UNKNOWN</b> too often, enroll a few more samples for them.</li>
+      <li>The <b>match</b> number on the kiosk shows confidence — higher is a stronger match.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;color:var(--muted)">Good to know</h3>
+    <ul>
+      <li><b>Data stays on this device.</b> Enrollments and the log live in this browser only.
+          Enroll on the machine you'll use as the kiosk.</li>
+      <li>Clearing the browser's site data will erase enrollments — export your CSV to keep records.</li>
+      <li>This is a concept demo; for a shared, multi-device system the data would move to a central database.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

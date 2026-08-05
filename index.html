@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nazra · Attendance Kiosk</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Nazra <span class="ar">نظرة</span></div>
+    <nav class="nav">
+      <a class="btn good" href="enroll.html" target="_blank" rel="noopener">＋ Enroll employee</a>
+      <a class="btn ghost" href="tutorial.html" target="_blank" rel="noopener">📘 Tutorial</a>
+    </nav>
+  </header>
+
+  <p class="hint">Look at the camera. Once you're recognized, <b>blink</b> to clock in or out.</p>
+
+  <div class="grid">
+    <div class="stage">
+      <video id="video" playsinline muted></video>
+      <canvas id="overlay" class="overlay"></canvas>
+      <div id="status" class="status">Starting…</div>
+      <div id="banner" class="banner" style="display:none"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Today's log</h3>
+      <div id="log"><div class="empty logline">No entries yet.</div></div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn ghost" id="export">⬇︎ Export CSV</button>
+        <a class="btn ghost" href="enroll.html" target="_blank" rel="noopener">Manage people</a>
+      </div>
+      <p class="hint" id="enrollhint" style="margin-top:12px"></p>
+    </div>
+  </div>
+</div>
+<script type="module" src="js/kiosk.js"></script>
+</body>
+</html>
