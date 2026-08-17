@@ -131,7 +131,7 @@ export function removePerson(empId) {
   saveEnrollment(db);
 }
 
-// Identify a live fingerprint. Returns {id, name, sim} — id null if below threshold.
+// Identify a live fingerprint. Returns {id, name, sim} - id null if below threshold.
 export function identify(liveVec, threshold) {
   const db = loadEnrollment();
   let best = { id: null, name: null, sim: -1 };

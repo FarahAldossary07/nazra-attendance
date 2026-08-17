@@ -32,7 +32,7 @@ async function main() {
     await nz.initModels(setStatus);
     await nz.startCamera(video);
   } catch (e) {
-    setStatus("Camera/model error — allow camera access", "no");
+    setStatus("Camera/model error - allow camera access", "no");
     console.error(e);
     return;
   } finally {
@@ -76,7 +76,7 @@ async function capture(n) {
     await new Promise((r) => setTimeout(r, 120)); // spread out for variety
   }
   msg(got ? `Captured ${got} sample(s). Move your head slightly between captures.`
-         : "No eyes detected — look at the camera.");
+         : "No eyes detected - look at the camera.");
 }
 
 function save() {
@@ -87,7 +87,7 @@ function save() {
   const total = nz.addPerson(id, name, buffer);
   buffer = []; countEl.textContent = 0;
   renderPeople();
-  msg(`Saved ${name} (ID ${id}) — ${total} samples stored. You can enroll another, or go to the kiosk.`);
+  msg(`Saved ${name} (ID ${id}) - ${total} samples stored. You can enroll another, or go to the kiosk.`);
 }
 
 main();

@@ -34,7 +34,7 @@ function refreshEnrollHint() {
   const n = Object.keys(db).length;
   document.getElementById("enrollhint").textContent = n
     ? `${n} employee(s) enrolled on this device.`
-    : "No employees enrolled yet — click “Enroll employee”.";
+    : "No employees enrolled yet - click “Enroll employee”.";
 }
 
 async function main() {
@@ -42,7 +42,7 @@ async function main() {
     await nz.initModels(setStatus);
     await nz.startCamera(video);
   } catch (e) {
-    setStatus("Camera/model error — allow camera access", "no");
+    setStatus("Camera/model error - allow camera access", "no");
     console.error(e);
     return;
   } finally {
@@ -67,7 +67,7 @@ function loop() {
 
     if (!Object.keys(db).length) {
       setStatus("No employees enrolled", "no");
-      showBanner("No employees enrolled — click “Enroll employee”", "info");
+      showBanner("No employees enrolled - click “Enroll employee”", "info");
     } else if (res && res.faceLandmarks && res.faceLandmarks[0]) {
       handleFace(res, db, now);
     } else {
@@ -113,7 +113,7 @@ function handleFace(res, db, now) {
     if (blinkEvent) {
       const entry = nz.writeLog(stableId, name);
       lastLog[stableId] = now;
-      successText = `LOG SUCCESSFUL — ${entry.direction} ${entry.time}`;
+      successText = `LOG SUCCESSFUL - ${entry.direction} ${entry.time}`;
       successUntil = now + SUCCESS_SHOW;
       renderLog();
     }

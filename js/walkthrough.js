@@ -14,12 +14,10 @@
   function show() {
     tour.hidden = false;
     document.body.classList.add("tour-active");
-    if (enrollBtn) enrollBtn.classList.add("tour-pop");
   }
   function hide(persist) {
     tour.hidden = true;
     document.body.classList.remove("tour-active");
-    if (enrollBtn) enrollBtn.classList.remove("tour-pop");
     if (persist) { try { localStorage.setItem(KEY, "1"); } catch (e) {} }
   }
 

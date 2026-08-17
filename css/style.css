@@ -1,4 +1,4 @@
-/* Nazra · shared app theme — matches the PRD's innovative look */
+/* Nazra · shared app theme - matches the PRD's innovative look */
 :root{
   --bg:#07080c; --panel:rgba(255,255,255,.04); --panel-b:rgba(255,255,255,.09);
   --ink:#eef1f7; --muted:#9aa6bd; --faint:#6b7488;
@@ -39,16 +39,15 @@ header.top{display:flex;align-items:center;justify-content:space-between;gap:12p
 
 /* layout */
 .grid{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
-.stage{position:relative;flex:1 1 640px;min-width:320px}
-video,canvas.overlay{width:100%;border-radius:var(--radius);border:1px solid var(--panel-b);display:block;
-  background:#05060a}
+.stage{position:relative;flex:1 1 720px;min-width:320px}
+video,canvas.overlay{width:100%;border-radius:var(--radius);border:1px solid var(--panel-b);display:block}
 .stage{box-shadow:0 24px 60px rgba(0,0,0,.45)}
-.stage video{transform:scaleX(-1);border-radius:var(--radius)}
-canvas.overlay{position:absolute;inset:0;transform:scaleX(-1);pointer-events:none}
+.stage video{transform:scaleX(-1);border-radius:var(--radius);background:#05060a}
+canvas.overlay{position:absolute;inset:0;transform:scaleX(-1);pointer-events:none;background:transparent}
 
 /* panel / cards */
 .panel{background:var(--panel);border:1px solid var(--panel-b);border-radius:var(--radius);padding:18px;
-  flex:1 1 300px;min-width:260px;backdrop-filter:blur(6px)}
+  flex:1 1 260px;min-width:240px;max-width:340px;backdrop-filter:blur(6px)}
 .panel h3{margin:0 0 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);font-family:var(--mono)}
 .card{background:var(--panel);border:1px solid var(--panel-b);border-radius:var(--radius);padding:16px 18px;margin:14px 0;backdrop-filter:blur(6px)}
 
@@ -108,10 +107,9 @@ h3{margin:16px 0 6px}
 .tour-actions{display:flex;gap:10px;flex-wrap:wrap}
 .tour-actions .btn{flex:1 1 auto;justify-content:center}
 
-/* dim the page but lift the header buttons up so “start here” glows above the shadow */
-body.tour-active header.top,body.tour-active .khero{position:relative;z-index:1002}
-@keyframes tourpulse{0%,100%{box-shadow:0 0 0 0 rgba(55,224,176,.55)}50%{box-shadow:0 0 0 12px rgba(55,224,176,0)}}
-.tour-pop{animation:tourpulse 1.8s ease-out infinite;outline:2px solid var(--teal);outline-offset:3px;border-radius:12px}
+/* the whole page dims behind the overlay; the card's Start button is the glowing target */
+@keyframes tourpulse{0%,100%{box-shadow:0 0 0 0 rgba(55,224,176,.55)}50%{box-shadow:0 0 0 14px rgba(55,224,176,0)}}
+#tour-start{animation:tourpulse 1.9s ease-out infinite}
 
 /* floating help button to reopen the walkthrough */
 .fab{position:fixed;right:18px;bottom:18px;z-index:900;width:46px;height:46px;border-radius:50%;
@@ -130,13 +128,17 @@ svg.ic{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-wid
 .brand-tag{color:var(--faint);font-weight:500;font-size:14px}
 
 /* ---------- kiosk hero (big centered glowing logo) ---------- */
-.khero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;
-  padding:18px 0 24px;border-bottom:1px solid var(--panel-b);margin-bottom:22px}
-.khero-logo{width:min(440px,82vw);height:auto;display:block;
-  filter:drop-shadow(0 0 30px rgba(139,123,255,.45));animation:heroGlow 3.6s ease-in-out infinite}
-@keyframes heroGlow{0%,100%{filter:drop-shadow(0 0 24px rgba(139,123,255,.35))}
-  50%{filter:drop-shadow(0 0 50px rgba(55,224,176,.5))}}
-.khero-by{margin:2px 0 6px;color:var(--muted);font-size:14.5px;letter-spacing:.02em}
+.khero{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+  padding:12px 0 14px;border-bottom:1px solid var(--panel-b);margin-bottom:16px}
+/* creative, subtle blurred logo-glow behind the hero (ambient, not distracting) */
+.khero::before{content:"";position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);
+  width:min(620px,94vw);height:360px;background:url(../assets/logo.png) center/contain no-repeat;
+  filter:blur(46px) saturate(1.25);opacity:.11;z-index:-1;pointer-events:none}
+.khero-logo{width:min(200px,44vw);height:auto;display:block;transition:transform .12s ease-out;will-change:transform;
+  filter:drop-shadow(0 0 20px rgba(139,123,255,.45));animation:heroGlow 3.6s ease-in-out infinite}
+@keyframes heroGlow{0%,100%{filter:drop-shadow(0 0 15px rgba(139,123,255,.32))}
+  50%{filter:drop-shadow(0 0 32px rgba(55,224,176,.5))}}
+.khero-by{margin:0 0 4px;color:var(--muted);font-size:13.5px;letter-spacing:.02em}
 .khero-by b{color:var(--ink);font-weight:650}
 .khero .nav{justify-content:center}
 @media(prefers-reduced-motion:reduce){.khero-logo{animation:none}}
