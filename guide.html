@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nazra · Complete Guide</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1d2129; --ink:#e8eaed; --muted:#9aa3b2;
+    --line:#2a2f3a; --accent:#7c9cff; --good:#5ad6b0; --warn:#ffb454; --bad:#ff6b6b;
+    --chip:#232834; --radius:16px; --maxw:920px;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px 100px}
+  a{color:var(--accent);text-decoration:none}
+  /* hero */
+  .hero{padding:56px 0 30px;border-bottom:1px solid var(--line);text-align:center}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--good);margin:0 0 12px}
+  h1{font-size:46px;line-height:1.05;margin:0 0 8px;font-weight:800;letter-spacing:-.02em}
+  h1 .ar{color:var(--muted);font-weight:600;font-size:32px}
+  .tag{color:var(--muted);font-size:19px;max-width:620px;margin:6px auto 0}
+  /* table of contents */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 0}
+  .toc a{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--muted)}
+  .toc a:hover{color:var(--ink);border-color:var(--accent)}
+  /* sections */
+  section{padding-top:30px;margin-top:26px;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:0}
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+  .h2big{font-size:28px;font-weight:750;letter-spacing:-.01em;margin:2px 0 12px}
+  h3{font-size:20px;margin:24px 0 6px;font-weight:650}
+  p{margin:12px 0}
+  .lead{font-size:18px}
+  .muted{color:var(--muted)}
+  ul,ol{padding-left:22px} li{margin:7px 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:16px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  @media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr}h1{font-size:34px}}
+  /* roadmap timeline */
+  .road{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:18px 0}
+  .stop{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;position:relative}
+  .stop .num{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#0f1115;font-weight:800;display:grid;place-items:center;margin-bottom:10px}
+  .stop.b .num{background:var(--good)} .stop.c .num{background:var(--warn)}
+  .stop h4{margin:0 0 4px;font-size:17px}
+  @media(max-width:700px){.road{grid-template-columns:1fr}}
+  /* numbered steps */
+  .steps{counter-reset:s;list-style:none;padding:0;margin:8px 0}
+  .steps>li{position:relative;padding:14px 0 14px 52px;border-bottom:1px dashed var(--line)}
+  .steps>li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:12px;width:34px;height:34px;border-radius:50%;
+    background:var(--accent);color:#0f1115;display:grid;place-items:center;font-weight:800}
+  .steps.good>li:before{background:var(--good)}
+  .steps b{color:var(--ink)}
+  /* callouts */
+  .call{border-radius:var(--radius);padding:16px 20px;margin:16px 0;border:1px solid}
+  .call.why{background:rgba(90,214,176,.08);border-color:rgba(90,214,176,.35)}
+  .call.key{background:rgba(124,156,255,.08);border-color:rgba(124,156,255,.35)}
+  .call.warn{background:rgba(255,180,84,.08);border-color:rgba(255,180,84,.35)}
+  .call .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+  /* analogy */
+  .analogy{display:flex;gap:16px;align-items:flex-start}
+  .analogy .emoji{font-size:34px;line-height:1}
+  /* fingerprint viz */
+  .flow{font-family:var(--mono);font-size:13px;line-height:1.75;white-space:pre;overflow-x:auto;background:var(--panel2);
+    border:1px solid var(--line);border-radius:var(--radius);padding:18px;color:var(--ink)}
+  /* pills */
+  .pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:6px;background:var(--chip);border:1px solid var(--line);color:var(--muted)}
+  code{font-family:var(--mono);font-size:.9em;background:var(--chip);padding:1.5px 6px;border-radius:5px}
+  .stack{display:flex;gap:12px;align-items:flex-start}
+  .stack .ico{font-size:26px}
+  footer{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">The Complete Guide</p>
+  <h1>Nazra <span class="ar">نظرة</span></h1>
+  <p class="tag">A friendly, start-to-finish guide to the attendance system that recognizes people by their eyes — so it works even while the niqab is worn.</p>
+  <nav class="toc">
+    <a href="#what">What it is</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#first">What to do first</a>
+    <a href="#enroll">Enrolling people</a>
+    <a href="#how">How it tells people apart</a>
+    <a href="#captures">Why the photos</a>
+    <a href="#blink">The blink</a>
+    <a href="#stack">Tech stack</a>
+    <a href="#arch">Architecture</a>
+  </nav>
+</header>
+
+<!-- WHAT -->
+<section id="what">
+  <h2>Start here</h2>
+  <div class="h2big">What is Nazra?</div>
+  <p class="lead">Nazra is a <b>digital sign-in sheet</b>. Instead of a card, a PIN, or a fingerprint pad, an employee simply <b>looks at a camera and blinks</b>, and the system writes down who they are and the exact time — a clock-in / clock-out record.</p>
+  <p>What makes it special: it identifies people using only the area <b>around their eyes</b>. Normal face-recognition systems fail when someone wears a niqab because most of the face is covered. Nazra is built for exactly that situation — it never needs to see the nose, mouth, or chin.</p>
+  <div class="call key">
+    <span class="lbl">The one-sentence version</span>
+    Look at the camera → Nazra recognizes your eyes → you blink to prove you're really there → it logs your name, the date, and the time.
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <h2>The big picture</h2>
+  <div class="h2big">Your roadmap — three stages</div>
+  <p>Getting from zero to a working attendance system has just three stages. You do stage 1 and 2 once; stage 3 is the everyday use.</p>
+  <div class="road">
+    <div class="stop a">
+      <div class="num">1</div>
+      <h4>Put it online</h4>
+      <p class="muted">Turn the app into a web link anyone can open. Done once.</p>
+    </div>
+    <div class="stop b">
+      <div class="num">2</div>
+      <h4>Enroll your team</h4>
+      <p class="muted">Teach it each person's eyes — a few minutes per person, once.</p>
+    </div>
+    <div class="stop c">
+      <div class="num">3</div>
+      <h4>Clock in daily</h4>
+      <p class="muted">Everyone looks + blinks to sign in and out. Every day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FIRST -->
+<section id="first">
+  <h2>Stage 1</h2>
+  <div class="h2big">What to do first — get it online</div>
+  <p>The app is already built and saved to your GitHub account. To turn it into a shareable web link, you connect it to a free hosting service called <b>Vercel</b>. This is a one-time, click-through setup — no coding.</p>
+  <ol class="steps">
+    <li>Go to <a href="https://vercel.com/new" target="_blank" rel="noopener"><b>vercel.com/new</b></a> and choose <b>Continue with GitHub</b> (sign in and approve if asked).</li>
+    <li>Find the project named <b>nazra-attendance</b> in the list and click <b>Import</b>.</li>
+    <li>Leave the settings as they are — just check: <b>Framework = Other</b>, <b>Build Command = empty</b>, <b>Output Directory = a single dot</b> (<code>.</code>).</li>
+    <li>Click <b>Deploy</b> and wait about 30 seconds.</li>
+    <li>You'll receive a link like <b>nazra-attendance.vercel.app</b>. <b>That link is your app.</b> Save it — you'll open it on the computer you want to use as the sign-in station.</li>
+  </ol>
+  <div class="call warn">
+    <span class="lbl">Good to know</span>
+    A camera only works on a secure (<code>https</code>) web address — Vercel gives you that automatically, so the link works on any laptop or phone you share it with.
+  </div>
+</section>
+
+<!-- ENROLL -->
+<section id="enroll">
+  <h2>Stage 2</h2>
+  <div class="h2big">Enrolling your team</div>
+  <p>"Enrolling" means introducing a person to Nazra so it can recognize them later. You do this once per employee. Open your app link and click <b>＋ Enroll employee</b> — it opens in a new tab.</p>
+  <ol class="steps good">
+    <li>Type the person's <b>full name</b> and <b>employee ID</b> (for example, <i>Farah Aldossary · 326003</i>).</li>
+    <li>Have them look at the camera <b>exactly as they'll appear each day — niqab on</b>. There's no need to uncover.</li>
+    <li>Click <b>⚡ Capture 20</b>. While it captures, they slowly <b>turn their head a little and lean in and out</b>, and let the niqab sit slightly differently once or twice.</li>
+    <li>Aim for about <b>40 captures total</b>, then click <b>💾 Save employee</b>.</li>
+    <li>Repeat for each person. That's it — they're now enrolled.</li>
+  </ol>
+  <p class="muted">The next section explains <i>why</i> we take so many pictures, and why we capture in the real covered condition — it's the secret to it working reliably.</p>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <h2>The clever part</h2>
+  <div class="h2big">How it tells two niqab-wearing people apart</div>
+  <p class="lead">This is the question everyone asks: if two people are both covered and you can only see eyes, how can a computer possibly tell them apart? Here's the honest, simple answer.</p>
+
+  <div class="card">
+    <div class="analogy">
+      <div class="emoji">👁️</div>
+      <div>
+        <h3 style="margin-top:0">Think of it like a fingerprint — but for the eye area</h3>
+        <p style="margin-bottom:0">You already recognize your close friends by their eyes alone, even in a mask — the shape of the eye, the eyebrows, the space between them, the little details. The area around the eyes is surprisingly personal. Nazra does the same thing, just with maths instead of intuition.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Here is the whole trick in three steps:</p>
+  <div class="flow">1.  CROP     Nazra finds your eyes in the camera picture and
+             cuts out just that region (eyes + brows).
+
+2.  MEASURE  It looks at that eye-region and turns it into a long
+             list of numbers — about 1,280 of them. Think of this
+             list as a "number-fingerprint" of your eyes.
+
+                 Farah's eyes  →  [0.12, -0.98, 0.34, ... ]
+                 Sara's  eyes  →  [0.88,  0.05, -0.21, ... ]
+
+             Same person's eyes always make a SIMILAR list.
+             A different person's eyes make a DIFFERENT list.
+
+3.  COMPARE  A live person's number-fingerprint is compared to
+             everyone enrolled. The closest match wins —
+             but only if it's close ENOUGH. If nothing is close
+             enough, Nazra says "UNKNOWN" instead of guessing.</div>
+
+  <div class="call key">
+    <span class="lbl">The safety line</span>
+    That "close enough" cut-off is deliberately strict. For an attendance system, logging the <b>wrong</b> person is worse than logging <b>no one</b> — so when Nazra isn't sure, it says <b>UNKNOWN</b> and asks the person to try again, rather than risk a wrong name.
+  </div>
+
+  <p>Because two different people produce two clearly different number-fingerprints, Nazra can separate them — even though both are covered and you only ever see their eyes.</p>
+</section>
+
+<!-- CAPTURES -->
+<section id="captures">
+  <h2>Why enrollment matters</h2>
+  <div class="h2big">Why we take ~40 eye photos (and what they're for)</div>
+  <p>During enrollment, Nazra isn't just "taking a photo." Each capture is turned into one of those number-fingerprints and stored under the person's name. So <b>40 captures = 40 reference fingerprints</b> for that person. Here's why more (and varied) is better:</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Why <em>many</em> pictures?</h3>
+      <p style="margin-bottom:0">A single photo is fragile — tilt your head or change the light and it no longer matches. Many photos, taken as you move slightly, teach Nazra the <b>natural range</b> of how your eyes look. Then a live match just needs to be close to <b>any one</b> of them.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Why capture <em>covered</em>?</h3>
+      <p style="margin-bottom:0">Nazra will be used with the niqab on, so we <b>show it that exact look</b> during enrollment — no need to ever uncover. Matching the real day-to-day condition is what makes recognition reliable.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Why <em>move your head</em>?</h3>
+      <p style="margin-bottom:0">Turning slightly and leaning in/out spreads the samples across angles and distances — so a person standing a little differently each morning still matches.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">What is actually saved?</h3>
+      <p style="margin-bottom:0">Only the <b>number-fingerprints</b> and the name + ID — kept privately in that computer's browser. The point of enrollment is simply to build each person's set of reference fingerprints.</p>
+    </div>
+  </div>
+
+  <div class="call why">
+    <span class="lbl">In one line</span>
+    Enrollment = teaching Nazra the natural variety of a person's eyes, in the conditions it'll really see them, so everyday recognition is fast and reliable.
+  </div>
+</section>
+
+<!-- BLINK -->
+<section id="blink">
+  <h2>The proof-of-life step</h2>
+  <div class="h2big">Why you blink to log in</div>
+  <p>After Nazra recognizes someone, it asks them to <b>blink</b> before writing the record. This is a simple <b>anti-cheating check</b> (called "liveness"). A photo of someone's eyes held up to the camera can't blink — a real, present person can. So the blink confirms the right person is <b>actually standing there</b>, not being faked with a picture on a phone.</p>
+  <p class="muted">Nazra detects the blink by watching the eyes briefly close and reopen, then it saves the attendance record with the date and time.</p>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <h2>For the curious</h2>
+  <div class="h2big">The tech stack</div>
+  <p>Everything runs <b>inside the visitor's own web browser</b> — there is no server watching a camera and nothing is uploaded. Here's what powers it:</p>
+
+  <div class="card"><div class="stack"><div class="ico">🌐</div><div>
+    <h3 style="margin:0 0 2px">The web page <span class="pill">HTML · CSS · JavaScript</span></h3>
+    <p class="muted" style="margin:0">Plain web technology — the pages you see and click. No app to install; it opens like any website.</p>
+  </div></div></div>
+
+  <div class="card"><div class="stack"><div class="ico">🎥</div><div>
+    <h3 style="margin:0 0 2px">The camera <span class="pill">WebRTC / getUserMedia</span></h3>
+    <p class="muted" style="margin:0">The browser's built-in way to access a webcam, with the visitor's permission.</p>
+  </div></div></div>
+
+  <div class="card"><div class="stack"><div class="ico">🧠</div><div>
+    <h3 style="margin:0 0 2px">The eye-and-face AI <span class="pill">MediaPipe Tasks for Web</span></h3>
+    <p class="muted" style="margin:0">Google's on-device AI. Two parts: a <b>Face Landmarker</b> that locates the eyes and detects blinks, and an <b>Image Embedder</b> that turns the eye-region into the number-fingerprint. Both run locally in the browser via WebAssembly.</p>
+  </div></div></div>
+
+  <div class="card"><div class="stack"><div class="ico">💾</div><div>
+    <h3 style="margin:0 0 2px">The memory <span class="pill">Browser localStorage</span></h3>
+    <p class="muted" style="margin:0">Enrolled fingerprints and the attendance log are saved privately in the browser on the sign-in computer. Records export to a <b>CSV</b> spreadsheet on demand.</p>
+  </div></div></div>
+
+  <div class="card"><div class="stack"><div class="ico">🚀</div><div>
+    <h3 style="margin:0 0 2px">Hosting <span class="pill">GitHub + Vercel</span></h3>
+    <p class="muted" style="margin:0">The code lives on GitHub; Vercel serves it to the world as a fast, secure (<code>https</code>) website — and re-publishes automatically whenever the code is updated.</p>
+  </div></div></div>
+
+  <p class="muted"><b>Bonus:</b> there's also an earlier <b>Python</b> desktop version (OpenCV + MediaPipe + Flask) that we used to prove the idea before moving it into the browser.</p>
+</section>
+
+<!-- ARCH -->
+<section id="arch">
+  <h2>Under the hood</h2>
+  <div class="h2big">Software architecture</div>
+  <p>Because all the intelligence runs in the browser, the "system" is refreshingly simple. Vercel just hands the visitor a bundle of files; from then on, the visitor's browser does all the work — camera, AI, matching, and storage — with nothing sent back out.</p>
+
+  <div class="flow">┌───────────────────────────────────────────────────────────────────┐
+│                     VISITOR'S WEB BROWSER                          │
+│                    (laptop / phone camera)                        │
+│                                                                   │
+│   ┌───────────┐   frame    ┌──────────────────────────────────┐  │
+│   │  Camera   │ ─────────▶ │  1. Face Landmarker (MediaPipe)  │  │
+│   │ getUserMedia          │     • finds the eyes              │  │
+│   └───────────┘            │     • crops the eye region       │  │
+│                            │     • detects a blink            │  │
+│                            └───────────────┬──────────────────┘  │
+│                                            │ eye crop            │
+│                                            ▼                     │
+│                            ┌──────────────────────────────────┐  │
+│                            │  2. Image Embedder (MediaPipe)   │  │
+│                            │     eye crop → number-fingerprint│  │
+│                            └───────────────┬──────────────────┘  │
+│                                            │ fingerprint         │
+│                                            ▼                     │
+│                            ┌──────────────────────────────────┐  │
+│                            │  3. Matcher (core.js)            │  │
+│                            │     compare to enrolled people   │  │
+│                            │     → name / ID  or  "UNKNOWN"   │  │
+│                            └───────────────┬──────────────────┘  │
+│                                            │ recognized + blink  │
+│                                            ▼                     │
+│                            ┌──────────────────────────────────┐  │
+│                            │  4. Attendance log (localStorage)│  │
+│                            │     name · date · time · IN/OUT  │  │
+│                            │     └─▶ export to CSV            │  │
+│                            └──────────────────────────────────┘  │
+└───────────────────────────────────────────────────────────────────┘
+             ▲
+             │  loads the page + AI models (one time)
+             │
+   ┌─────────┴─────────┐        ┌───────────────────┐
+   │   Vercel (host)   │ ◀───── │   GitHub (code)   │
+   │  serves the site  │  auto  │  your repository  │
+   └───────────────────┘ deploy └───────────────────┘</div>
+
+  <h3>The files, in plain terms</h3>
+  <div class="grid2">
+    <div class="card">
+      <p style="margin:0"><span class="pill">index.html</span> The kiosk — the everyday sign-in screen.</p>
+    </div>
+    <div class="card">
+      <p style="margin:0"><span class="pill">enroll.html</span> The enrollment screen — teach it a new person.</p>
+    </div>
+    <div class="card">
+      <p style="margin:0"><span class="pill">tutorial.html</span> A short in-app how-to.</p>
+    </div>
+    <div class="card">
+      <p style="margin:0"><span class="pill">js/core.js</span> The brains — detection, fingerprinting, matching, storage.</p>
+    </div>
+    <div class="card">
+      <p style="margin:0"><span class="pill">js/kiosk.js</span> Runs the sign-in screen's logic.</p>
+    </div>
+    <div class="card">
+      <p style="margin:0"><span class="pill">js/enroll.js</span> Runs the enrollment screen's logic.</p>
+    </div>
+    <div class="card">
+      <p style="margin:0"><span class="pill">models/</span> The two AI model files (eyes + fingerprint).</p>
+    </div>
+    <div class="card">
+      <p style="margin:0"><span class="pill">css/style.css</span> The look and feel.</p>
+    </div>
+  </div>
+
+  <div class="call warn" style="margin-top:20px">
+    <span class="lbl">One honest limitation</span>
+    Because enrolled fingerprints live in one browser, recognition works on the computer where people were enrolled — perfect for a fixed office sign-in station. To recognize the same people across many different devices, the next version would store fingerprints in a shared online database. That's the natural "v2."
+  </div>
+</section>
+
+<footer>
+  <p><b>Nazra نظرة</b> · Complete Guide · A concept project for niqab-friendly attendance.<br>
+  Recognizes people by the eyes · runs privately in the browser · logs the time and date.</p>
+</footer>
+
+</div>
+</body>
+</html>
