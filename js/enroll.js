@@ -35,6 +35,8 @@ async function main() {
     setStatus("Camera/model error — allow camera access", "no");
     console.error(e);
     return;
+  } finally {
+    window.dispatchEvent(new Event("nazra-ready")); // fade the loading screen
   }
   renderPeople();
   document.getElementById("cap1").onclick = () => capture(1);

@@ -34,7 +34,7 @@ function refreshEnrollHint() {
   const n = Object.keys(db).length;
   document.getElementById("enrollhint").textContent = n
     ? `${n} employee(s) enrolled on this device.`
-    : "No employees enrolled yet — click “＋ Enroll employee”.";
+    : "No employees enrolled yet — click “Enroll employee”.";
 }
 
 async function main() {
@@ -45,6 +45,8 @@ async function main() {
     setStatus("Camera/model error — allow camera access", "no");
     console.error(e);
     return;
+  } finally {
+    window.dispatchEvent(new Event("nazra-ready")); // fade the loading screen
   }
   refreshEnrollHint();
   renderLog();
@@ -116,7 +118,7 @@ function handleFace(res, db, now) {
       renderLog();
     }
   } else if (known && now - (lastLog[id] || 0) <= LOG_COOLDOWN) {
-    showBanner(`Already logged ✓ (Employee ${id})`, "info");
+    showBanner(`Already logged (Employee ${id})`, "info");
   } else {
     hideBanner();
   }

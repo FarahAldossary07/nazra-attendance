@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nazra · Complete Guide</title>
+<link rel="icon" href="assets/logo.png">
 <style>
   :root{
     --bg:#0f1115; --panel:#171a21; --panel2:#1d2129; --ink:#e8eaed; --muted:#9aa3b2;
@@ -72,6 +73,8 @@
   code{font-family:var(--mono);font-size:.9em;background:var(--chip);padding:1.5px 6px;border-radius:5px}
   .stack{display:flex;gap:12px;align-items:flex-start}
   .stack .ico{font-size:26px}
+  .stack .ico svg{width:26px;height:26px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .analogy .emoji svg{width:34px;height:34px;fill:none;stroke:var(--good);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   footer{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
 </style>
 </head>
@@ -79,6 +82,9 @@
 <div class="wrap">
 
 <header class="hero">
+  <img src="assets/logo.png" alt="Nazra"
+       style="width:min(300px,70vw);height:auto;display:block;margin:0 auto 8px;filter:drop-shadow(0 0 26px rgba(124,156,255,.35))"
+       onerror="this.style.display='none'">
   <p class="eyebrow">The Complete Guide</p>
   <h1>Nazra <span class="ar">نظرة</span></h1>
   <p class="tag">A friendly, start-to-finish guide to the attendance system that recognizes people by their eyes — so it works even while the niqab is worn.</p>
@@ -153,12 +159,12 @@
 <section id="enroll">
   <h2>Stage 2</h2>
   <div class="h2big">Enrolling your team</div>
-  <p>"Enrolling" means introducing a person to Nazra so it can recognize them later. You do this once per employee. Open your app link and click <b>＋ Enroll employee</b> — it opens in a new tab.</p>
+  <p>"Enrolling" means introducing a person to Nazra so it can recognize them later. You do this once per employee. Open your app link and click <b>Enroll employee</b> — it opens in a new tab.</p>
   <ol class="steps good">
     <li>Type the person's <b>full name</b> and <b>employee ID</b> (for example, <i>Farah Aldossary · 326003</i>).</li>
     <li>Have them look at the camera <b>exactly as they'll appear each day — niqab on</b>. There's no need to uncover.</li>
-    <li>Click <b>⚡ Capture 20</b>. While it captures, they slowly <b>turn their head a little and lean in and out</b>, and let the niqab sit slightly differently once or twice.</li>
-    <li>Aim for about <b>40 captures total</b>, then click <b>💾 Save employee</b>.</li>
+    <li>Click <b>Capture 20</b>. While it captures, they slowly <b>turn their head a little and lean in and out</b>, and let the niqab sit slightly differently once or twice.</li>
+    <li>Aim for about <b>40 captures total</b>, then click <b>Save employee</b>.</li>
     <li>Repeat for each person. That's it — they're now enrolled.</li>
   </ol>
   <p class="muted">The next section explains <i>why</i> we take so many pictures, and why we capture in the real covered condition — it's the secret to it working reliably.</p>
@@ -172,7 +178,7 @@
 
   <div class="card">
     <div class="analogy">
-      <div class="emoji">👁️</div>
+      <div class="emoji"><svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
       <div>
         <h3 style="margin-top:0">Think of it like a fingerprint — but for the eye area</h3>
         <p style="margin-bottom:0">You already recognize your close friends by their eyes alone, even in a mask — the shape of the eye, the eyebrows, the space between them, the little details. The area around the eyes is surprisingly personal. Nazra does the same thing, just with maths instead of intuition.</p>
@@ -252,27 +258,27 @@
   <div class="h2big">The tech stack</div>
   <p>Everything runs <b>inside the visitor's own web browser</b> — there is no server watching a camera and nothing is uploaded. Here's what powers it:</p>
 
-  <div class="card"><div class="stack"><div class="ico">🌐</div><div>
+  <div class="card"><div class="stack"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></div><div>
     <h3 style="margin:0 0 2px">The web page <span class="pill">HTML · CSS · JavaScript</span></h3>
     <p class="muted" style="margin:0">Plain web technology — the pages you see and click. No app to install; it opens like any website.</p>
   </div></div></div>
 
-  <div class="card"><div class="stack"><div class="ico">🎥</div><div>
+  <div class="card"><div class="stack"><div class="ico"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div>
     <h3 style="margin:0 0 2px">The camera <span class="pill">WebRTC / getUserMedia</span></h3>
     <p class="muted" style="margin:0">The browser's built-in way to access a webcam, with the visitor's permission.</p>
   </div></div></div>
 
-  <div class="card"><div class="stack"><div class="ico">🧠</div><div>
+  <div class="card"><div class="stack"><div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div><div>
     <h3 style="margin:0 0 2px">The eye-and-face AI <span class="pill">MediaPipe Tasks for Web</span></h3>
     <p class="muted" style="margin:0">Google's on-device AI. Two parts: a <b>Face Landmarker</b> that locates the eyes and detects blinks, and an <b>Image Embedder</b> that turns the eye-region into the number-fingerprint. Both run locally in the browser via WebAssembly.</p>
   </div></div></div>
 
-  <div class="card"><div class="stack"><div class="ico">💾</div><div>
+  <div class="card"><div class="stack"><div class="ico"><svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg></div><div>
     <h3 style="margin:0 0 2px">The memory <span class="pill">Browser localStorage</span></h3>
     <p class="muted" style="margin:0">Enrolled fingerprints and the attendance log are saved privately in the browser on the sign-in computer. Records export to a <b>CSV</b> spreadsheet on demand.</p>
   </div></div></div>
 
-  <div class="card"><div class="stack"><div class="ico">🚀</div><div>
+  <div class="card"><div class="stack"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><div>
     <h3 style="margin:0 0 2px">Hosting <span class="pill">GitHub + Vercel</span></h3>
     <p class="muted" style="margin:0">The code lives on GitHub; Vercel serves it to the world as a fast, secure (<code>https</code>) website — and re-publishes automatically whenever the code is updated.</p>
   </div></div></div>

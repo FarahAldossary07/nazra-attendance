@@ -4,23 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nazra · Enroll Employee</title>
+<link rel="icon" href="assets/logo.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!-- loading screen -->
+<div id="splash">
+  <div class="splash-inner">
+    <img class="splash-logo" src="assets/logo.png" alt="Nazra"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div class="splash-word grad">NAZRA</div>
+    <div class="splash-load">Loading</div>
+    <div class="splash-bar"></div>
+  </div>
+</div>
 <div class="wrap">
   <header class="top">
-    <div class="brand">Nazra <span class="ar">نظرة</span> · Enroll</div>
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/logo.png" alt="Nazra نظرة"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span class="brand-fallback"><span class="grad">Nazra</span> <span class="ar">نظرة</span></span>
+      <span class="brand-tag">· Enroll</span>
+    </a>
     <nav class="nav">
-      <a class="btn ghost" href="tutorial.html" target="_blank" rel="noopener">📘 Full tutorial</a>
-      <a class="btn ghost" href="index.html">← Back to kiosk</a>
+      <a class="btn ghost" href="tutorial.html" target="_blank" rel="noopener">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Full tutorial</a>
+      <a class="btn ghost" href="index.html">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to kiosk</a>
     </nav>
   </header>
 
   <div class="card" style="border-left:3px solid var(--teal)">
     <b>Quick steps:</b> ① type name + ID · ② look at the camera <b>the way you'll appear day-to-day</b>
-    (niqab on — no need to uncover) and click <b>⚡ Capture 20</b> a couple of times, turning your head slightly ·
-    ③ click <b>💾 Save employee</b>.
-    <a href="tutorial.html" target="_blank" rel="noopener">See the full tutorial →</a>
+    (niqab on — no need to uncover) and click <b>Capture 20</b> a couple of times, turning your head slightly ·
+    ③ click <b>Save employee</b>.
+    <a href="tutorial.html" target="_blank" rel="noopener">See the full tutorial</a>
   </div>
 
   <div class="grid">
@@ -35,12 +53,15 @@
       <div class="field"><label>Full name</label><input id="name" placeholder="Farah Aldossary"></div>
       <div class="field"><label>Employee ID</label><input id="empid" placeholder="326003"></div>
       <div class="row">
-        <button class="btn" id="cap1">📸 Capture 1</button>
-        <button class="btn" id="cap20">⚡ Capture 20</button>
+        <button class="btn" id="cap1">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>Capture 1</button>
+        <button class="btn" id="cap20">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>Capture 20</button>
       </div>
       <div class="row"><span class="count" id="count">0</span><span class="hint">samples ready</span></div>
       <div class="row">
-        <button class="btn good" id="save">💾 Save employee</button>
+        <button class="btn good" id="save">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save employee</button>
         <button class="btn ghost" id="clear">Clear</button>
       </div>
       <div class="msg" id="msg"></div>
@@ -50,6 +71,7 @@
     </div>
   </div>
 </div>
+<script src="js/splash.js" defer></script>
 <script type="module" src="js/enroll.js"></script>
 </body>
 </html>
